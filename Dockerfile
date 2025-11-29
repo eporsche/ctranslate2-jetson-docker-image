@@ -1,4 +1,6 @@
-FROM nvcr.io/nvidia/l4t-cuda:12.6.11-devel-aarch64-ubuntu22.04 AS builder
+# Nameing changed from l4t
+# https://catalog.ngc.nvidia.com/orgs/nvidia/containers/12.6.11-devel?version=12.6.11-devel-aarch64-ubuntu22.04
+FROM nvcr.io/nvidia/12.6.11-devel:12.6.11-devel-aarch64-ubuntu22.04 AS builder
 
 # CTranslate2 build configuration
 ARG CTRANSLATE_VERSION=4.6.1

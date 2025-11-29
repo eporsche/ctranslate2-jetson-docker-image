@@ -16,8 +16,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-dev \
     wget \
-    libcudnn9-dev\
     && rm -rf /var/lib/apt/lists/*
+
+# Download cuDNN local installer
+RUN wget -O /tmp/cudnn.deb \
+    "https://developer.download.nvidia.com/compute/cudnn/9.1.1/local_installers/cudnn-local-tegra-repo-ubuntu2204-9.1.1_1.0-1_arm64.deb"
+
+# Install cuDNN local repo .deb
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends /tmp/cudnn.deb && \
+    rm -f /tmp/cudnn.deb && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy cuDNN keyring to system keyrings
+RUN cp /var/cudnn-local-tegra-repo-ubuntu2204-9.1.1/cudnn-*-keyring.gpg /usr/share/keyrings/
+
+# Install cudnn-cuda-12 from the cuDNN repo
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends cudnn-cuda-12 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install uv for faster Python package installation
 RUN python3 -m pip install --no-cache-dir uv

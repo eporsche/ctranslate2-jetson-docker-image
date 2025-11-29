@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-dev \
     wget \
-    libcudnn9-cuda-12-dev \
+    libcudnn9-dev-cuda-12 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv for faster Python package installation

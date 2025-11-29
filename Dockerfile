@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/l4t-cuda:12.2.2-devel-arm64-ubuntu22.04 AS builder
+FROM nvcr.io/nvidia/l4t-cuda:12.6.11-devel-aarch64-ubuntu22.04 AS builder
 
 # CTranslate2 build configuration
 ARG CTRANSLATE_VERSION=4.6.1
@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-dev \
     wget \
-    libcudnn8-dev \
+    libcudnn89-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv for faster Python package installation

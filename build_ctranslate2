@@ -27,5 +27,3 @@ python3 setup.py --verbose bdist_wheel --dist-dir /opt
 
 # install/upload wheels
 uv pip install --system --force-reinstall /opt/ctranslate2*.whl
-
-# The wheel is available at /opt/ctranslate2*.whl for COPY --from=builder
